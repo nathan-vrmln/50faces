@@ -198,11 +198,11 @@ function drawGrid() {
             noStroke();
         }
         
-        // Effet de mauvais clic (flash rouge de la carte entière)
+        // Effet de mauvais clic (flash rouge)
         if (wrongClickEffects[displayIndex]) {
             let effect = wrongClickEffects[displayIndex];
-            let alpha = map(effect.timer, effect.duration, 0, 255, 0);
-            fill(255, 80, 80, alpha);
+            let alpha = map(effect.timer, effect.duration, 0, 200, 0);
+            fill(255, 100, 100, alpha);
             rect(x, y, size, size, 8);
             
             effect.timer -= 16;
@@ -263,8 +263,7 @@ function drawTimer() {
         let boxWidth = 180;
         let boxHeight = 70;
         fill(255, 255, 255, 0.95);
-        stroke(102, 126, 234);
-        strokeWeight(2);
+        noStroke();
         rect((width - boxWidth) / 2, padding, boxWidth, boxHeight, 15);
         
         // Texte du timer
@@ -281,13 +280,11 @@ function drawTimer() {
         textSize(36);
         textStyle(BOLD);
         text("⏱ " + timeString, width / 2, padding + 35);
-        noStroke();
     } else {
         // Mode desktop: à gauche
         // Fond du timer avec ombre
         fill(255, 255, 255, 0.95);
-        stroke(102, 126, 234);
-        strokeWeight(2);
+        noStroke();
         rect(padding, padding, 240, 100, 15);
         
         // Texte du timer
@@ -304,7 +301,6 @@ function drawTimer() {
         textSize(48);
         textStyle(BOLD);
         text("⏱ " + timeString, padding + 120, padding + 50);
-        noStroke();
     }
 }
 
