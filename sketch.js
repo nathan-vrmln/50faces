@@ -86,7 +86,7 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
     checkMobileMode();
-    // Sélectionner aléatoirement COLS * ROWS images parmi les disponibles
+    // Sélectionner aléatoirement COLS * ROWS images parmi les disponibles (après avoir défini COLS et ROWS)
     initializeVisibleFaces();
     updateGrid();
     pickRandomTarget();
@@ -343,18 +343,19 @@ function checkMobileMode() {
     let wasMobileMode = isMobileMode;
     isMobileMode = windowWidth <= 1024;
     
-    // Si changement de mode, adapter la grille
-    if (wasMobileMode !== isMobileMode) {
-        if (isMobileMode) {
-            // Passage en mode mobile: 4 colonnes x 6 lignes
-            COLS = 4;
-            ROWS = 6;
-        } else {
-            // Passage en mode desktop: 8 colonnes x 6 lignes
-            COLS = 8;
-            ROWS = 6;
-        }
-        // Réinitialiser les visages avec le nouveau nombre de cases
+    // Toujours définir les bonnes dimensions
+    if (isMobileMode) {
+        // Mode mobile: 4 colonnes x 6 lignes
+        COLS = 4;
+        ROWS = 6;
+    } else {
+        // Mode desktop: 8 colonnes x 6 lignes
+        COLS = 8;
+        ROWS = 6;
+    }
+    
+    // Si changement de mode ou initialisation, réinitialiser les visages
+    if (wasMobileMode !== isMobileMode || visibleFaces.length !== COLS * ROWS) {
         initializeVisibleFaces();
         updateGrid();
         pickRandomTarget();
