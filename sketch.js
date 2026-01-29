@@ -198,11 +198,11 @@ function drawGrid() {
             noStroke();
         }
         
-        // Effet de mauvais clic (flash rouge)
+        // Effet de mauvais clic (flash rouge de la carte entière)
         if (wrongClickEffects[displayIndex]) {
             let effect = wrongClickEffects[displayIndex];
-            let alpha = map(effect.timer, effect.duration, 0, 200, 0);
-            fill(255, 100, 100, alpha);
+            let alpha = map(effect.timer, effect.duration, 0, 255, 0);
+            fill(255, 80, 80, alpha);
             rect(x, y, size, size, 8);
             
             effect.timer -= 16;
