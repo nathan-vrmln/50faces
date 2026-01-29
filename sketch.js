@@ -230,6 +230,7 @@ function drawTargetName() {
     // Nom de la personne à trouver
     fill(0, 0, 0);
     textStyle(BOLD);
+    textFont("Tanker");
     
     if (isMobileMode) {
         // Mode mobile: centré sur la largeur, comme le chrono
