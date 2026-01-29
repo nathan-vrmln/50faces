@@ -241,7 +241,7 @@ function drawTargetName() {
         // Mode desktop: à gauche
         textAlign(LEFT, TOP);
         textSize(48);
-        text(currentTargetName, padding, padding + 120);
+        text(currentTargetName, padding + 20, padding + 120);
     }
 }
 
@@ -292,7 +292,7 @@ function drawTimer() {
         rect(padding, padding, 240, 100, 15);
         
         // Texte du timer
-        fill(102, 126, 234);
+        fill(0, 0, 0);
         textFont("Satoshi");
         textStyle(NORMAL);
         
