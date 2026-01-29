@@ -148,10 +148,11 @@ function drawGrid() {
     
     if (isMobileMode) {
         // Mode mobile: grille après le chrono et le nom
-        // Chrono: padding + 70 + padding = 110
-        // Nom: 40 + padding = 70
+        // Chrono: padding + 70 (hauteur 70)
+        // Espacement réduit: 5px (au lieu de 10px)
+        // Nom: 40px
         // Marges égales droite/gauche/bas
-        let topReserved = padding + 70 + padding + 40 + padding;
+        let topReserved = padding + 70 + 5 + 40 + padding;
         let availableHeightForGrid = height - topReserved - padding;
         startY = topReserved + (availableHeightForGrid - totalGridHeight) / 2;
     } else {
@@ -236,7 +237,7 @@ function drawTargetName() {
         // Mode mobile: centré sur la largeur, comme le chrono
         textAlign(CENTER, TOP);
         textSize(40);
-        text(currentTargetName, width / 2, padding + 80);
+        text(currentTargetName, width / 2, padding + 75);
     } else {
         // Mode desktop: à gauche
         textAlign(LEFT, TOP);
@@ -315,10 +316,11 @@ function updateGrid() {
     
     if (isMobileMode) {
         // Mode mobile: réserver de l'espace en haut pour le chrono et le nom
-        // Chrono: padding + 70px + padding = 110px
+        // Chrono: padding + 70px
+        // Espacement: 5px
         // Nom: 40px + padding = 70px
-        // Total: ~180px réservé
-        availableHeight = height - padding * 2 - 180;
+        // Total: ~175px réservé
+        availableHeight = height - padding * 2 - 175;
         
         let cellSizeByWidth = availableWidth / COLS;
         let cellSizeByHeight = availableHeight / ROWS;
@@ -392,7 +394,7 @@ function drawCorrectClickEffects() {
     let startY;
     
     if (isMobileMode) {
-        let topReserved = padding + 70 + padding + 40 + padding;
+        let topReserved = padding + 70 + 5 + 40 + padding;
         let availableHeightForGrid = height - topReserved - padding;
         startY = topReserved + (availableHeightForGrid - totalGridHeight) / 2;
     } else {
@@ -480,7 +482,7 @@ function mousePressed() {
     let startY;
     
     if (isMobileMode) {
-        let topReserved = padding + 70 + padding + 40 + padding;
+        let topReserved = padding + 70 + 5 + 40 + padding;
         let availableHeightForGrid = height - topReserved - padding;
         startY = topReserved + (availableHeightForGrid - totalGridHeight) / 2;
     } else {
