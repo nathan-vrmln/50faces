@@ -122,6 +122,12 @@ function draw() {
         line(0, y, width, y);
     }
     
+    // Si le jeu est terminé, afficher seulement le chrono centré
+    if (gameFinished) {
+        drawFinalTimer();
+        return;
+    }
+    
     // Afficher la grille
     drawGrid();
     
@@ -136,6 +142,22 @@ function draw() {
     
     // Afficher les particules
     drawParticles();
+}
+
+function drawFinalTimer() {
+    // Afficher le chrono final, centré horizontalement et verticalement
+    let elapsedTime = startTime + 1000000;
+    let seconds = floor(elapsedTime / 1000);
+    let minutes = floor(seconds / 60);
+    let secs = seconds % 60;
+    let timeString = nf(minutes, 2) + ":" + nf(secs, 2);
+    
+    fill(0, 0, 0);
+    textFont("Satoshi");
+    textStyle(NORMAL);
+    textAlign(CENTER, CENTER);
+    textSize(96);
+    text("⏱ " + timeString, width / 2, height / 2);
 }
 
 function drawGrid() {
