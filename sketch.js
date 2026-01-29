@@ -229,8 +229,8 @@ function drawTextBox() {
 function drawTargetName() {
     // Nom de la personne à trouver
     fill(0, 0, 0);
+    textFont("Satoshi");
     textStyle(BOLD);
-    textFont("Tanker");
     
     if (isMobileMode) {
         // Mode mobile: centré sur la largeur, comme le chrono
@@ -272,6 +272,8 @@ function drawTimer() {
         
         // Texte du timer
         fill(0, 0, 0);
+        textFont("Satoshi");
+        textStyle(NORMAL);
         
         // Effet rouge du chrono (malus) - appliqué au texte
         if (timerPenaltyEffect.timer > 0) {
@@ -281,7 +283,6 @@ function drawTimer() {
         
         textAlign(CENTER, CENTER);
         textSize(36);
-        textStyle(BOLD);
         text("⏱ " + timeString, width / 2, padding + 35);
     } else {
         // Mode desktop: à gauche
@@ -292,6 +293,8 @@ function drawTimer() {
         
         // Texte du timer
         fill(102, 126, 234);
+        textFont("Satoshi");
+        textStyle(NORMAL);
         
         // Effet rouge du chrono (malus) - appliqué au texte
         if (timerPenaltyEffect.timer > 0) {
@@ -301,7 +304,6 @@ function drawTimer() {
         
         textAlign(CENTER, CENTER);
         textSize(48);
-        textStyle(BOLD);
         text("⏱ " + timeString, padding + 120, padding + 50);
     }
 }
