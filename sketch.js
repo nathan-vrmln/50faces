@@ -1,5 +1,5 @@
 // Mini jeu P5.js - Grille de 49 visages - RESPONSIVE
-// Mode Desktop: 8x6 | Mode Mobile: 3x7
+// Mode Desktop: 8x6 | Mode Mobile: 4x6
 
 let faces = {}; // Cache pour les images chargées
 let faceNames = [
