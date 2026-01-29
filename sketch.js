@@ -229,10 +229,12 @@ function drawTargetName() {
     textStyle(BOLD);
     
     if (isMobileMode) {
-        // Mode mobile: au centre, sous le chrono
-        textAlign(CENTER, TOP);
+        // Mode mobile: au centre, sous le chrono, aligné avec le début du chrono
+        let boxWidth = 180;
+        let chronometerLeft = (width - boxWidth) / 2;
+        textAlign(LEFT, TOP);
         textSize(40);
-        text(currentTargetName, width / 2, padding + 80);
+        text(currentTargetName, chronometerLeft, padding + 80);
     } else {
         // Mode desktop: à gauche
         textAlign(LEFT, TOP);
@@ -271,8 +273,7 @@ function drawTimer() {
         
         // Effet rouge du chrono (malus) - appliqué au texte
         if (timerPenaltyEffect.timer > 0) {
-            let alpha = map(timerPenaltyEffect.timer, timerPenaltyEffect.duration, 0, 150, 0);
-            fill(255, 100, 100, alpha);
+            fill(255, 100, 100);
             timerPenaltyEffect.timer -= 16;
         }
         
@@ -292,8 +293,7 @@ function drawTimer() {
         
         // Effet rouge du chrono (malus) - appliqué au texte
         if (timerPenaltyEffect.timer > 0) {
-            let alpha = map(timerPenaltyEffect.timer, timerPenaltyEffect.duration, 0, 150, 0);
-            fill(255, 100, 100, alpha);
+            fill(255, 100, 100);
             timerPenaltyEffect.timer -= 16;
         }
         
