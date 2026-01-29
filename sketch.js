@@ -150,7 +150,10 @@ function drawGrid() {
         // Mode mobile: grille après le chrono et le nom
         // Chrono: padding + 70 + padding = 110
         // Nom: 40 + padding = 70
-        startY = padding + 70 + padding + 40 + padding;
+        // Marges égales droite/gauche/bas
+        let topReserved = padding + 70 + padding + 40 + padding;
+        let availableHeightForGrid = height - topReserved - padding;
+        startY = topReserved + (availableHeightForGrid - totalGridHeight) / 2;
     } else {
         // Mode desktop
         let availableHeight = height - padding * 2;
@@ -225,16 +228,14 @@ function drawTextBox() {
 
 function drawTargetName() {
     // Nom de la personne à trouver
-    fill(102, 126, 234);
+    fill(0, 0, 0);
     textStyle(BOLD);
     
     if (isMobileMode) {
-        // Mode mobile: au centre, sous le chrono, aligné avec le début du chrono
-        let boxWidth = 180;
-        let chronometerLeft = (width - boxWidth) / 2;
-        textAlign(LEFT, TOP);
+        // Mode mobile: centré sur la largeur, comme le chrono
+        textAlign(CENTER, TOP);
         textSize(40);
-        text(currentTargetName, chronometerLeft, padding + 80);
+        text(currentTargetName, width / 2, padding + 80);
     } else {
         // Mode desktop: à gauche
         textAlign(LEFT, TOP);
@@ -269,7 +270,7 @@ function drawTimer() {
         rect((width - boxWidth) / 2, padding, boxWidth, boxHeight, 15);
         
         // Texte du timer
-        fill(102, 126, 234);
+        fill(0, 0, 0);
         
         // Effet rouge du chrono (malus) - appliqué au texte
         if (timerPenaltyEffect.timer > 0) {
@@ -387,7 +388,9 @@ function drawCorrectClickEffects() {
     let startY;
     
     if (isMobileMode) {
-        startY = padding + 70 + padding + 40 + padding;
+        let topReserved = padding + 70 + padding + 40 + padding;
+        let availableHeightForGrid = height - topReserved - padding;
+        startY = topReserved + (availableHeightForGrid - totalGridHeight) / 2;
     } else {
         let availableHeight = height - padding * 2;
         startY = (availableHeight - totalGridHeight) / 2 + padding;
@@ -473,7 +476,9 @@ function mousePressed() {
     let startY;
     
     if (isMobileMode) {
-        startY = padding + 70 + padding + 40 + padding;
+        let topReserved = padding + 70 + padding + 40 + padding;
+        let availableHeightForGrid = height - topReserved - padding;
+        startY = topReserved + (availableHeightForGrid - totalGridHeight) / 2;
     } else {
         let availableHeight = height - padding * 2;
         startY = (availableHeight - totalGridHeight) / 2 + padding;
