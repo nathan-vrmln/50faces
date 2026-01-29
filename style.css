@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+canvas {
+    display: block;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background-color: #252525;
+}
+
+/* Mode Desktop */
+@media (min-width: 1025px) {
+    canvas {
+        border-radius: 20px;
+    }
+}
+
+/* Mode Tablet/Mobile - Breakpoint à 1024px */
+@media (max-width: 1024px) {
+    body {
+        justify-content: stretch;
+        align-items: stretch;
+        min-height: 100vh;
+    }
+    
+    canvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
