@@ -68,6 +68,7 @@ let isMobileMode = false; // Flag pour déterminer le mode
 let startTime = 0;
 let gameStarted = false;
 let gameFinished = false;
+let finalTime = 0; // Temps final quand le jeu est terminé
 let wrongClickEffects = {}; // Effets de mauvais clic
 let timerPenaltyEffect = { timer: 0, duration: 0 }; // Effet rouge du chrono
 let correctClickEffects = []; // Effets de cercles jaunes
@@ -146,8 +147,7 @@ function draw() {
 
 function drawFinalTimer() {
     // Afficher le chrono final, centré horizontalement et verticalement
-    let elapsedTime = startTime + 1000000;
-    let seconds = floor(elapsedTime / 1000);
+    let seconds = floor(finalTime / 1000);
     let minutes = floor(seconds / 60);
     let secs = seconds % 60;
     let timeString = nf(minutes, 2) + ":" + nf(secs, 2);
@@ -404,6 +404,7 @@ function pickRandomTarget() {
     } else {
         // Jeu terminé!
         gameFinished = true;
+        finalTime = millis() - startTime; // Capturer le temps final
     }
 }
 
