@@ -86,15 +86,29 @@ function preload() {
 function setup() {
     createCanvas(windowWidth, windowHeight);
     checkMobileMode();
-    // Initialiser la liste des visages visibles (grille fixe 48)
-    for (let i = 0; i < faceNames.length; i++) {
-        visibleFaces.push(i);
-    }
-    // Mélanger aléatoirement les positions des images
-    shuffle(visibleFaces, true);
+    // Sélectionner aléatoirement COLS * ROWS images parmi les disponibles
+    initializeVisibleFaces();
     updateGrid();
     pickRandomTarget();
     // Ne pas démarrer le chrono ici - il démarre au premier clic
+}
+
+function initializeVisibleFaces() {
+    // Créer un tableau de tous les indices disponibles
+    let allIndices = [];
+    for (let i = 0; i < faceNames.length; i++) {
+        allIndices.push(i);
+    }
+    
+    // Mélanger les indices
+    shuffle(allIndices, true);
+    
+    // Sélectionner le nombre exact de visages nécessaires pour la grille
+    let gridSize = COLS * ROWS;
+    visibleFaces = [];
+    for (let i = 0; i < gridSize; i++) {
+        visibleFaces.push(allIndices[i]);
+    }
 }
 
 function draw() {
@@ -340,7 +354,10 @@ function checkMobileMode() {
             COLS = 8;
             ROWS = 6;
         }
+        // Réinitialiser les visages avec le nouveau nombre de cases
+        initializeVisibleFaces();
         updateGrid();
+        pickRandomTarget();
     }
 }
 
